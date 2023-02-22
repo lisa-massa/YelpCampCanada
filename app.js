@@ -14,6 +14,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const helmet = require('helmet');
+const favicon = require('serve-favicon');
 
 const MongoDBStore = require("connect-mongo")(session);
 
@@ -55,6 +56,8 @@ app.use(mongoSanitize({
 //     contentSecurityPolicy: false,
 // })
 // );
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
